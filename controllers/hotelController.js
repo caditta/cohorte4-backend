@@ -56,7 +56,18 @@ const createHotel = async (req, res) => {
     //     res.status(500).json({ message: 'Error al crear el hotel' });
     // }
 };
+// Controlador para obtener todos los hoteles
+const getAllHotels = async (req, res) => {
+    try {
+        const [hotels] = await db.promise().query('SELECT * FROM hotel'); // Asegúrate de que la consulta sea correcta
+        res.status(200).json(hotels);
+    } catch (error) {
+        console.error('Error al obtener hoteles:', error);
+        res.status(500).json({ message: 'Error al obtener hoteles' });
+    }
+};
 
 module.exports = {
     createHotel,
+    getAllHotels,
 };

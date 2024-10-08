@@ -1,9 +1,9 @@
+// routes/hotelRoutes.js
 const express = require('express');
+const hotelController = require('../controllers/hotelController'); // Asegúrate de tener este controlador
 const router = express.Router();
 
-// Ruta de ejemplo para hoteles
-router.get('/', (req, res) => {
-  res.send('Lista de hoteles');
-});
+// Ruta para crear un nuevo hotel
+router.post('/hotels', hotelController.createHotel);
 
 module.exports = router;
